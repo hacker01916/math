@@ -1,0 +1,68 @@
+##slip3
+Q.1]  
+1) 
+import matplotlib.pyplot as plt 
+subjects = ["Mathematics", "English", "Biology", "Physics", "Chemistry"]  
+marks = [45, 35, 85, 50, 60] 
+plt.barh(subjects, marks, color='brown')  
+plt.xlabel("Marks")  
+plt.ylabel("Subjects")  
+plt.title("Horizontal Bar Graph")  
+plt.show() 
+
+2) 
+import numpy as np 
+import matplotlib.pyplot as plt  
+x = np.linspace(-5, 5, 100) 
+y = x**3 - 3*x + 2 
+plt.plot(x, y, color='maroon')  
+plt.arrow(0, 0, 4, 0, head_width=1, color='black') 
+plt.arrow(0, 0, 0, 20, head_width=1, color='black')  
+plt.xlabel("x") 
+plt.ylabel("y") 
+plt.title("Graph of y = x^3 - 3x + 2")  
+plt.show() 
+
+3) 
+import numpy as np 
+import matplotlib.pyplot as plt 
+from mpl_toolkits.mplot3d import Axes3D  
+x = np.linspace(-20, 20, 50) 
+y = np.linspace(-20, 20, 50)  
+X, Y = np.meshgrid(x, y) 
+Z = np.sqrt(X**2 + Y**2)  
+fig = plt.figure() 
+ax = fig.add_subplot(111, projection='3d')  
+ax.plot_surface(X, Y, Z, color='red')  
+plt.title("Surface Plot") 
+plt.show() 
+
+
+4) 
+from sympy import Point, Line 
+L = Point(-5, 0) 
+M = Point(4, 0) 
+N = Point(9, 0) 
+print("Collinear:", Point.is_collinear(L, M, N))  
+line = Line(L, N)  
+print("Slope =", line.slope)  
+print("Equation =", line) 
+
+
+Q.2]  
+1) 
+import matplotlib.pyplot as plt  
+import numpy as np 
+x = [0, 1, 1, 0, 0] 
+y = [0, 0, 1, 1, 0] 
+y_ref = [-i for i in y] 
+theta = np.radians(45) 
+x_rot = [x[i]*np.cos(theta) - y_ref[i]*np.sin(theta) for i in range(len(x))]  
+y_rot = [x[i]*np.sin(theta) + y_ref[i]*np.cos(theta) for i in range(len(x))]  
+x_scale = [-3*i for i in x_rot]  
+y_scale = [-3*i for i in y_rot]  
+plt.plot(x, y, label="Original") 
+plt.plot(x_scale, y_scale, label="Transformed")  
+plt.legend() 
+plt.title("Combined Transformations") 
+plt.show()

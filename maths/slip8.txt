@@ -1,0 +1,70 @@
+Q.1]  
+1)  
+import matplotlib.pyplot as plt  
+cities = ["Satara", "Dhule", "Nashik", "Nagpur", "Pune"]  
+temp = [20, 32, 25, 40, 30]  
+plt.bar(cities, temp)  
+plt.xlabel("City")  
+plt.ylabel("Temperature (°C)")  
+plt.title("City Temperature")  
+plt.show()  
+
+2)  
+import numpy as np  
+import matplotlib.pyplot as plt  
+x = np.linspace(-np.pi, np.pi, 100)  
+y = np.cos(x) + np.sin(x)  
+plt.plot(x, y, color='maroon', linestyle='--')  
+plt.xlabel("x")  
+plt.ylabel("y")  
+plt.title("y = cos(x) + sin(x)") 
+plt.show()  
+
+3)  
+import numpy as np  
+import matplotlib.pyplot as plt  
+from mpl_toolkits.mplot3d import Axes3D  
+x = np.linspace(0, 2*np.pi, 50)  
+y = np.linspace(0, 2*np.pi, 50)  
+X, Y = np.meshgrid(x, y)  
+Z = np.sin(np.sqrt(X**2 + Y**2))  
+fig = plt.figure()  
+ax = fig.add_subplot(111, projection='3d')  
+ax.plot_wireframe(X, Y, Z, color='brown')  
+plt.title("Wireframe Plot")  
+plt.show() 
+
+
+4)  
+from sympy import Point, Line  
+L = Point(2, 6)  
+M = Point(-2, 9)  
+N = Point(-3, -5)  
+print("Collinear:", Point.is_collinear(L, M, N))  
+print("LM =", L.distance(M))  
+print("MN =", M.distance(N))  
+print("LN =", L.distance(N))  
+line = Line(L, M)  
+print("Slope LM =", line.slope) 
+
+
+Q.2]  
+1)  
+import matplotlib.pyplot as plt  
+import numpy as np  
+x = [-2, -2, 3, 4, -2]  
+y = [5, 9, 5, 2, 5]  
+x_trans = [i + 2 for i in x]  
+y_trans = [i - 5 for i in y]  
+theta = np.radians(60)  
+x_rot = [x[i]*np.cos(theta) - y[i]*np.sin(theta) for i in range(len(x))]  
+y_rot = [x[i]*np.sin(theta) + y[i]*np.cos(theta) for i in range(len(x))]  
+x_shear = [x[i] + 5*y[i] for i in range(len(x))]  
+y_shear = y  
+plt.plot(x, y, label="Original")  
+plt.plot(x_trans, y_trans, label="Translated")  
+plt.plot(x_rot, y_rot, label="Rotated")  
+plt.plot(x_shear, y_shear, label="Sheared") 
+plt.legend()  
+plt.title("Polygon Transformations")  
+plt.show()
